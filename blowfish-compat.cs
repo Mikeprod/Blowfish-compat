@@ -33,7 +33,7 @@ Use the same mode of operation for decryption.
  *  Encrypting the same data with the same key will result in the same ciphertext. This mode should NOT be used unless neccessary.
  *  
  *---CBC---
- *  CBC mode encrypts each block of data in succession so that any changes in the data will result in a completly different ciphertext.
+ *  CBC mode encrypts each block of data in succession so that any changes in the data will result in a completely different ciphertext.
  *  Also, an IV is used so that encrypting the same data with the same key will result in a different ciphertext. 
  *  CBC mode is the most popular mode of operation.
  *  
@@ -252,13 +252,21 @@ namespace BlowFishCS
             }
         }
 
+        /// <summary>
+        /// This parameters controls the 64 bits split into 2 uint32 values.
+        /// The non standard way is to not reverse the order of the splitted bytes 
+        /// </summary>
         public bool NonStandard
         {
             get { return nonStandardMethod; }
             set { nonStandardMethod = value; }
         }
 
-        public bool compatMode
+        /// <summary>
+        /// Parameter ensuring the endianness of the cypher.
+        /// Setting this parameter as true on little endian systems ensures compatibility with big endian systems
+        /// </summary>
+        public bool CompatMode
         {
             get { return compatMethod; }
             set { compatMethod = value; }
